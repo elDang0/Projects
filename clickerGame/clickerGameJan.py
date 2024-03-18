@@ -1,5 +1,5 @@
 import pygame, time
-temp, temp1, screen, font, score, running, lastClicked,img = pygame.init(), pygame.font.init(), pygame.display.set_mode((1280, 720)), pygame.font.SysFont("monospace", 50), 0, True, -1000 ,pygame.image.load("clickerGame/cookie.png")
+temp, temp1, screen, font, score, running, lastClicked = pygame.init(), pygame.font.init(), pygame.display.set_mode((1280, 720)), pygame.font.SysFont("monospace", 50), 0, True, -1000
 while True: 
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: temp = pygame.quit()
