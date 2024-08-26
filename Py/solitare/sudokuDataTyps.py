@@ -27,18 +27,21 @@ class Helper:
         for x in arr:
             if x.numb == numb: return True
         return False
-class square:
-    numb = None(int)
-    posX = None
-    posY = None 
-
-    def valNumb(number,self):
+    def valNumb(number,sqr):
         tempArrX = []
         tempArrY = []
-        for sqr in grid.arr[self.posY]:
-            if sqr != None:
-                tempArrX.append(sqr.numb)
+        for sqre in grid.arr[sqr.Y]:
+            if sqre != None:
+                tempArrX.append(sqre.numb)
         for sqrArr in grid.arr:
             if sqr != None:
-                tempArrY.append(sqrArr[self.posX].numb)
-        if Helper.numbInArr(tempArrY,number) and Helper.numbInArr(tempArrX,number): self.numb = number
+                tempArrY.append(sqrArr[sqr.X].numb)
+        if Helper.numbInArr(tempArrY,number) and Helper.numbInArr(tempArrX,number): sqr.numb = number
+        boxStartRow = sqr.Y - (sqr.Y % 3) 
+        boxStartCol = sqr.X - (sqr.X % 3)
+
+class square:
+    numb = None(int)
+    X = None
+    Y = None 
+
