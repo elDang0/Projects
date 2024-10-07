@@ -47,7 +47,7 @@ class Vertex:
 
 class Renderer3D:
     rotation = float(0.1)
-    FOV = 10.0
+    FOV = 30.0
     deltaTime = 0.0
     windowWith = int
     windowHight = int
