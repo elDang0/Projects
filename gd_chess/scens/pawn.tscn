@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://b72ypk0pi7bdx"]
+
+[ext_resource type="Texture2D" uid="uid://cfvkkatifk66y" path="res://assets/pixel chess_v1.2/16x16 pieces/WhitePieces_Simplified.png" id="2_74jxj"]
+
+[sub_resource type="GDScript" id="GDScript_k2f2n"]
+script/source = "extends Node2D
+
+var selected = false
+
+@onready var button = $Button
+@onready var color_rect = $ColorRect
+@onready var timer = $Timer
+
+#func _on_button_button_down():
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and !button.pressed:
+				selected = false 
+				color_rect.visible = false
+
+
+func _on_button_pressed():
+	selected = true
+	color_rect.visible = true
+	timer.start()
+	
+
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4bs"]
+size = Vector2(16, 16)
+
+[node name="pawn" type="Area2D"]
+script = SubResource("GDScript_k2f2n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_74jxj")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ee4bs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.0948, 0.639373, 0.79, 0.411765)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

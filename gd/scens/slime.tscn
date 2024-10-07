@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2a6i80an3jx1"]
+
+[ext_resource type="Script" path="res://scripts/slime.gd" id="1_8wjof"]
+[ext_resource type="Texture2D" uid="uid://bivaiyc4n07ck" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_e0wmk"]
+[ext_resource type="PackedScene" uid="uid://do4o5fbds7qvm" path="res://scens/kill.tscn" id="2_oudvy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p06mv"]
+atlas = ExtResource("1_e0wmk")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vuyk"]
+atlas = ExtResource("1_e0wmk")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gs5a"]
+atlas = ExtResource("1_e0wmk")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiopl"]
+atlas = ExtResource("1_e0wmk")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_neucr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p06mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vuyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gs5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiopl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmwuk"]
+size = Vector2(10, 12)
+
+[node name="slime" type="Node2D"]
+script = ExtResource("1_8wjof")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_neucr")
+
+[node name="kill" parent="." instance=ExtResource("2_oudvy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_dmwuk")
+
+[node name="RayCastright" type="RayCast2D" parent="."]
+position = Vector2(1, 6)
+target_position = Vector2(6, 0)
+
+[node name="RayCastleft" type="RayCast2D" parent="."]
+position = Vector2(-1, 6)
+target_position = Vector2(-6, 0)

@@ -1,0 +1,233 @@
+[gd_scene load_steps=22 format=3 uid="uid://cffnbuj1digar"]
+
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_4x1iw"]
+[ext_resource type="Texture2D" uid="uid://cg2veag3ir4ds" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="1_jrrf4"]
+[ext_resource type="AudioStream" uid="uid://cednwqg40hric" path="res://assets/brackeys_platformer_assets/sounds/coin.wav" id="3_kot0q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vary7"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej8in"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arqhf"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cioap"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5yjb"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iq67"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kp8c"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuqmg"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rryy2"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uamm"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5skld"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys7jo"]
+atlas = ExtResource("1_jrrf4")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vujed"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vary7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej8in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arqhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cioap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5yjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iq67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kp8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuqmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rryy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uamm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5skld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys7jo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkj28"]
+radius = 4.12311
+
+[sub_resource type="GDScript" id="GDScript_w14pl"]
+script/source = "extends CollisionShape2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_6lkdl"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ioxc4"]
+resource_name = "pickup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6l5sh"]
+_data = {
+"RESET": SubResource("Animation_6lkdl"),
+"pickup": SubResource("Animation_ioxc4")
+}
+
+[node name="coin" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_4x1iw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vujed")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rkj28")
+script = SubResource("GDScript_w14pl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kot0q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6l5sh")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
