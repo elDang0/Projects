@@ -1,4 +1,5 @@
 from numpy import cos,sin
+from typing import List, Tuple
 
 class Point2D:
     x : float = float()
@@ -70,3 +71,15 @@ class Vertex:
 
 class muliVektor:
     VectorArr = []
+
+class Face:
+    """Represents a face of a 3D object defined by points."""
+    def __init__(self, points: List[Point3D]):
+        self.points = points
+
+    def get_center(self) -> Point3D:
+        """Calculate the center point of the face."""
+        x = sum(p.x for p in self.points) / len(self.points)
+        y = sum(p.y for p in self.points) / len(self.points)
+        z = sum(p.z for p in self.points) / len(self.points)
+        return Point3D(x, y, z)
