@@ -7,20 +7,36 @@ WINDOW_HEIGHT = 800
 FPS = 120
 
 global display, arr
-arr =[]
-arr += [random.randint(1, 700) for _ in range(200)]
+arr = []
+arr += [random.randint(1, 700) for _ in range(5)]
+
 
 def bubbleSort():
     """Sorts a list using bubble sort algorithm."""
     global arr
     n = len(arr)
     for i in range(n):
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
                 drawRects()
-                #sleep(0.)  
+                # sleep(0.)
                 print(f"Current array: {arr}")
+
+
+def bogoSort():
+    global arr
+    redo = True
+    while redo:
+        redo != redo
+        for i in range(len(arr)):
+            if len(arr) > i + 1:
+                if arr[i] > arr[i + 1]:
+                    redo = True
+        random.shuffle(arr)
+        drawRects()
+    sleep(10)
+
 
 def mergeSortVisual(arr):
     def merge(arr, l, m, r):
@@ -50,14 +66,16 @@ def mergeSortVisual(arr):
             k += 1
             drawRects()
             yield arr
+
     def mergeSortGen(arr, l, r):
         if r - l > 1:
             m = (l + r) // 2
             yield from mergeSortGen(arr, l, m)
             yield from mergeSortGen(arr, m, r)
             yield from merge(arr, l, m, r)
+
     return mergeSortGen(arr, 0, len(arr))
-    
+
 
 def drawRects():
     global display, arr
@@ -69,9 +87,6 @@ def drawRects():
         rect = pygame.Rect((X, WINDOW_HEIGHT - 100 - rectHight), (rectWith, rectHight))
         pygame.draw.rect(display, "Green", rect)
     pygame.display.flip()
-
-
-
 
 
 def main():
@@ -88,10 +103,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-        try:
-            next(sort_gen)
-        except StopIteration:
-            pass
+
+        bogoSort()
         clock.tick(FPS)
 
     pygame.quit()
@@ -99,5 +112,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
